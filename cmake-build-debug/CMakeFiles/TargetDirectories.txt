@@ -1,0 +1,3 @@
+C:/Users/zevss/CLionProjects/lab_17/cmake-build-debug/CMakeFiles/lab_17.dir
+C:/Users/zevss/CLionProjects/lab_17/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/zevss/CLionProjects/lab_17/cmake-build-debug/CMakeFiles/rebuild_cache.dir
