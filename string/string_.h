@@ -1,8 +1,12 @@
 #ifndef LAB_17_STRING__H
 #define LAB_17_STRING__H
+#include <ctype.h>
 
 // возвращает длину строки
 int lengthOfString(char *str);
+
+// возвращает количество символов в строке
+size_t strlen_(const char* begin);
 
 // возвращает количество символов в строке size_t strlen_(const char* begin);
 // возвращает указатель на первый элемент, расположенным между адресами begin и end не включая end.
