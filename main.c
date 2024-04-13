@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <assert.h>
 #include "string/string_.h"
 
@@ -159,6 +158,31 @@ void test_find_space_reverse() {
     test_find_space_reverse_is_not_last_space();
 }
 
+// 5
+void test_strcmp_is_equal() {
+    char s1[] = "123";
+    char s2[] = "123";
+    assert(strcmp_(s1, s2) == 0);
+}
+
+void test_strcmp_is_not_equal_1() {
+    char s1[] = "123";
+    char s2[] = "456";
+    assert(strcmp_(s1, s2) == -3);
+}
+
+void test_strcmp_is_not_equal_2() {
+    char s1[] = "125";
+    char s2[] = "123";
+    assert(strcmp_(s1, s2) == 2);
+}
+
+void test_strcmp_() {
+    test_strcmp_is_equal();
+    test_strcmp_is_not_equal_1();
+    test_strcmp_is_not_equal_2();
+}
+
 
 void test () {
     test_length_of_string();
@@ -168,6 +192,7 @@ void test () {
     test_find_space();
     test_find_non_space_reverse();
     test_find_space_reverse();
+    test_strcmp_;
 }
 
 int main() {
