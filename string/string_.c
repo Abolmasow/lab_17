@@ -59,3 +59,35 @@ int strcmp_(const char *lhs, const char *rhs) {
     }
     return *(const unsigned char*) lhs - *(const unsigned char*) rhs;
 }
+
+char* copy(const char* begin_source, const char* end_source, char* begin_destination) {
+    while (begin_source != end_source) {
+        *begin_destination = *begin_source;
+        ++begin_source;
+        ++begin_destination;
+    }
+    return begin_destination;
+}
+char* copyIf(const char* begin_source, const char* end_source, char* begin_destination,
+              int (*f)(int)) {
+    while (begin_source != end_source) {
+        if (f(*begin_source)) {
+            *begin_destination = *begin_source;
+            begin_destination++;
+        }
+        begin_source++;
+    }
+    return begin_destination;
+}
+char* copyIfReverse(const char *r_begin_source, const char *r_end_source, char
+*begin_destination, int (*f)(int)) {
+    char* start = r_begin_source;
+    while (start != r_end_source) {
+        if (f(*start)) {
+            *begin_destination = *start;
+            begin_destination++;
+        }
+        start--;
+    }
+    return begin_destination;
+}

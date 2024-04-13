@@ -183,6 +183,38 @@ void test_strcmp_() {
     test_strcmp_is_not_equal_2();
 }
 
+// 6 (a)
+void test_copy_1() {
+    char s[] = "test";
+    char s_copy[10];
+    copy(s, s + strlen_(s), s_copy);
+    assert(strcmp_(s_copy, "test") == 0);
+}
+void test_copy_2() {
+    char s[] = "";
+    char s_copy[10];
+    copy(s, s + strlen_(s), s_copy);
+    assert(strcmp_(s_copy, "") == 0);
+}
+void test_copy() {
+    test_copy_1();
+    test_copy_2();
+}
+// 6 (b)
+void test_copy_if() {
+    char s[] = "1abcd";
+    char s_copy[15];
+    copyIf(s, s + strlen_(s), s_copy, isalpha);
+    assert(strcmp_(s_copy, "abcd") == 0);
+}
+
+// 6 (c)
+void test_copy_if_reverse() {
+    char s[] = "f1s2a3";
+    char s_copy[15];
+    copyIfReverse(s + strlen_(s) - 1, s - 1, s_copy, isdigit);
+    assert(strcmp_(s_copy, "123") == 0);
+}
 
 void test () {
     test_length_of_string();
@@ -193,6 +225,10 @@ void test () {
     test_find_non_space_reverse();
     test_find_space_reverse();
     test_strcmp_;
+    test_copy();
+    test_copy_if();
+    test_copy_if_reverse();
+
 }
 
 int main() {
