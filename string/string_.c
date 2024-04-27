@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include "string_.h"
+#include <stdbool.h>
+
+char _string_buffer[MAX_STRING_SIZE + 1];
 
 int lengthOfString(char *str) {
     int length = 0;
@@ -12,7 +15,7 @@ int lengthOfString(char *str) {
     return length;
 }
 
-size_t strlen_(const char *begin) {
+size_t strlen_(char *begin) {
     char *end = begin;
     while (*end != '\0') {
         end++;
@@ -80,7 +83,7 @@ char* copyIf(const char* begin_source, const char* end_source, char* begin_desti
     }
     return begin_destination;
 }
-char* copyIfReverse(const char *r_begin_source, const char *r_end_source, char
+char* copyIfReverse(char *r_begin_source, char *r_end_source, char
 *begin_destination, int (*f)(int)) {
     char* start = r_begin_source;
     while (start != r_end_source) {
@@ -109,4 +112,44 @@ void assertString(const char* expected, char* got, char const* file_name, char c
         fprintf(stderr, "Got: \"%s\"\n\n", got);
     } else
         fprintf(stderr, "%s - OK\n", func_name);
+}
+
+bool getWord(char* begin_search, wordDescriptor* word) {
+    word->begin = findNonSpace(begin_search);
+    if (*word->begin == '\0')
+        return false;
+
+    word->end = findSpace(word->begin);
+
+    return true;
+}
+
+bool getWordWithoutSpace(char* begin_search, wordDescriptor* word) {
+    word->begin = findNonSpace(begin_search);
+    if (*word->begin == '\0')
+        return false;
+
+    word->end = findSpace(word->begin) - 1;
+
+    return true;
+}
+
+bool getWordReverse(char* r_begin, char* r_end, wordDescriptor* word) {
+    if (word->begin == r_end)
+        return false;
+
+    word->end = findNonSpaceReverse(r_begin, r_end);
+
+    word->begin = findSpaceReverse(r_begin, r_end);
+    word->begin = word->begin == r_end ? word->begin : word->begin + 1;
+
+    return true;
+}
+
+void freeString(char* string) {
+    char* ptr = string;
+    while (*ptr) {
+        *ptr = '\0';
+        ptr++;
+    }
 }
