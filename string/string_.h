@@ -95,4 +95,10 @@ void freeBag(bagOfWords* bag);
 //
 bool isPalindromeWord(wordDescriptor* word);
 
+//
+bool isWordEqual(const wordDescriptor word1, const wordDescriptor word2);
+
+//
+void wordDescriptorToString(wordDescriptor word, char* dest);
+
 #endif //LAB_17_STRING__H
