@@ -15,6 +15,9 @@ int lengthOfString(char *str) {
     return length;
 }
 
+bagOfWords _bag = {.words = NULL, .size = 0};
+bagOfWords _bag2 = {.words = NULL, .size = 0};
+
 size_t strlen_(char *begin) {
     char *end = begin;
     while (*end != '\0') {
@@ -152,4 +155,21 @@ void freeString(char* string) {
         *ptr = '\0';
         ptr++;
     }
+}
+
+void printWord(wordDescriptor word) {
+    while (word.begin <= word.end) {
+        printf("%c", *word.begin);
+        word.begin++;
+    }
+    printf("\n");
+}
+
+void freeBag(bagOfWords* bag) {
+    for (size_t i = 0; i < bag->size; i++) {
+        bag->words[i].begin = NULL;
+        bag->words[i].end = NULL;
+    }
+
+    bag->size = 0;
 }

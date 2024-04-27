@@ -11,10 +11,19 @@
 
 extern char _string_buffer[MAX_STRING_SIZE + 1];
 
+
 typedef struct wordDescriptor {
     char* begin;
     char* end;
 } wordDescriptor;
+
+typedef struct bagOfWords {
+    wordDescriptor words[MAX_N_WORDS_IN_STRING];
+    size_t size;
+} bagOfWords;
+
+extern bagOfWords _bag;
+extern bagOfWords _bag2;
 
 // возвращает длину строки
 int lengthOfString(char *str);
@@ -76,5 +85,11 @@ bool getWordReverse(char* r_begin, char* r_end, wordDescriptor* word);
 
 //
 void freeString(char* string);
+
+//
+void printWord(wordDescriptor word);
+
+//
+void freeBag(bagOfWords* bag);
 
 #endif //LAB_17_STRING__H
