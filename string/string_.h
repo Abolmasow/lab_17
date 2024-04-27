@@ -92,4 +92,7 @@ void printWord(wordDescriptor word);
 //
 void freeBag(bagOfWords* bag);
 
+//
+bool isPalindromeWord(wordDescriptor* word);
+
 #endif //LAB_17_STRING__H
