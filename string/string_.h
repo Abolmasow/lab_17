@@ -1,5 +1,6 @@
 #ifndef LAB_17_STRING__H
 #define LAB_17_STRING__H
+#define ASSERT_STRING(expected, got) assertString(expected, got, __FILE__, __FUNCTION__, __LINE__)
 #include <ctype.h>
 
 // возвращает длину строки
@@ -44,5 +45,11 @@ char* copyIf(const char *beginSource, const char *endSource, char *beginDestinat
 // заканчивая rendSource, удовлетворяющие функции-предикату f.
 // Функция возвращает значение beginDestination по окончанию работы функции.
 char* copyIfReverse(const char *rbeginSource, const char *rendSource, char *beginDestination, int (*f)(int));
+
+//
+char* getEndOfString(char* s);
+
+//
+void assertString(const char* expected, char* got, char const* file_name, char const* func_name, int line);
 
 #endif //LAB_17_STRING__H
